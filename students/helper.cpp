@@ -57,6 +57,7 @@ std::list<Student> readFile()
         if (!ifs.is_open())
         {
             throw("Failas neegzistuoja.");
+
         }
 
         std::list<Student> students;

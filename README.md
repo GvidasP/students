@@ -80,3 +80,7 @@ Naudojamas **partition_copy** algoritmas studentus išskaidyti į 2 grupes
 Naudojamas **remove_copy_if** algoritmas. Studentai iš vieno konteinerio perkeliami į kitą ir ištrinami iš esamo.
 `Studentu rusiavimas i 2 kategorijas uztruko: 0.185952`, naudojant `vector` konteinerį
 `Studentu rusiavimas i 2 kategorijas uztruko: 0.18629`, naudojant `list` konteinerį
+
+# v1.0 versija
+
+Pereita iš CodeBlocks į Visual Studio

@@ -1,6 +1,3 @@
-#ifndef GENERATOR_H
-#define GENERATOR_H
+#pragma once
 
 void writeStudents(int amount);
-
-#endif // GENERATOR_H

@@ -1,5 +1,4 @@
-#ifndef HELPER_H
-#define HELPER_H
+#pragma once
 
 #include "student.h"
 #include <vector>
@@ -12,5 +11,3 @@ bool compareString(Student& a, Student& b);
 std::list<Student> readFile();
 
 std::list<Student> sortStudents(std::list<Student> students);
-
-#endif

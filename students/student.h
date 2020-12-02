@@ -1,11 +1,11 @@
-#ifndef STUDENT_H
-#define STUDENT_H
+#pragma once
 
 #include <string>
 #include <vector>
 
-struct Student
+class Student
 {
+public:
     std::string name;
     std::string surname;
     std::vector<int> marks;
@@ -14,6 +14,7 @@ struct Student
     double final_mark_med;
     std::string category;
     bool file;
+
+    bool compareStudentsNames(const Student& a, const Student& b);
 };
 
-#endif

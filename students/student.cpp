@@ -1,3 +1,7 @@
 #include "student.h"
 
-struct Student student;
+
+bool Student :: compareStudentsNames(const Student& a, const Student& b)
+{
+	return a.name < b.name;
+}
