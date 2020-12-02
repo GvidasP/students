@@ -10,8 +10,8 @@ struct Student
     std::string surname;
     std::vector<int> marks;
     int exam;
-    float final_mark_avg;
-    float final_mark_med;
+    double final_mark_avg;
+    double final_mark_med;
     std::string category;
     bool file;
 };

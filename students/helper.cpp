@@ -53,10 +53,12 @@ std::list<Student> readFile()
         auto start = std::chrono::steady_clock::now();
 
         std::ifstream ifs("studentai1000000.txt");
+
         if (!ifs.is_open())
         {
             throw("Failas neegzistuoja.");
         }
+
         std::list<Student> students;
         std::string line;
 

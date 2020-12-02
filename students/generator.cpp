@@ -32,12 +32,12 @@ int sumOfMarks(std::vector<int> marks)
     return sum_of_marks;
 }
 
-float calculateAvg(std::vector<int> marks, int exam)
+double calculateAvg(std::vector<int> marks, int exam)
 {
     return 0.4 * (sumOfMarks(marks) / marks.size()) + 0.6 * exam;
 }
 
-float calculateMedian(std::vector<int> marks, int exam)
+double calculateMedian(std::vector<int> marks, int exam)
 {
     return 0.4 * median(marks) + 0.6 * exam;
 }
