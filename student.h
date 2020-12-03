@@ -6,65 +6,100 @@
 
 class Student
 {
-    public:
-        bool compareStudentsNames(const Student& a, const Student& b);
+public:
+    bool compareStudentsNames(const Student &a, const Student &b);
 
-        Student() {};
-        Student(std::string n, std::string s, std::vector<int> m, int e, double avg, double med, std::string c = "");
+    Student(){};
+    Student(std::string n, std::string s, std::vector<int> m, int e, double avg, double med, std::string c = "");
 
-        // Getters
-        const double& getFinalMarkAvg() {
-            return final_mark_avg;
-        };
+    ~Student(){};
 
-        const double getFinalMarkMed() {
-            return final_mark_med;
-        };
-        
-        const std::vector<int>& getMarks() {
-            return marks;
-        }
+    Student &operator=(const Student &that)
+    {
+        name = that.name;
+        surname = that.surname;
+        marks = that.marks;
+        exam = that.exam;
+        final_mark_avg = that.final_mark_avg;
+        final_mark_med = that.final_mark_med;
+        category = that.category;
+        return *this;
+    };
 
-        const std::string& getName() {
-            return name;
-        };
+    Student(const Student &that)
+    {
+        name = that.name;
+        surname = that.surname;
+        marks = that.marks;
+        exam = that.exam;
+        final_mark_avg = that.final_mark_avg;
+        final_mark_med = that.final_mark_med;
+        category = that.category;
+    }
 
-        const std::string& getSurname() {
-            return surname;
-        }
+    // Getters
+    const double &getFinalMarkAvg()
+    {
+        return final_mark_avg;
+    };
 
-        const std::string& getCategory() {
-            return category;
-        };
+    const double getFinalMarkMed()
+    {
+        return final_mark_med;
+    };
 
-        // Setters
-        void setCategory(const std::string& c) {
-            category = c;
-        };
+    const std::vector<int> &getMarks()
+    {
+        return marks;
+    }
 
-        void setMarks(const std::vector<int>& m) {
-            marks = m;
-        };
+    const std::string &getName()
+    {
+        return name;
+    };
 
-        void setName(const std::string& n) {
-            name = n;
-        };
+    const std::string &getSurname()
+    {
+        return surname;
+    }
 
-        void setSurname(const std::string& s) {
-            surname = s;
-        };
+    const std::string &getCategory()
+    {
+        return category;
+    };
 
-        void setExam(const int& e) {
-            exam = e;
-        }
+    // Setters
+    void setCategory(const std::string &c)
+    {
+        category = c;
+    };
 
-    private:
-        std::string name;
-        std::string surname;
-        std::vector<int> marks;
-        int exam;
-        double final_mark_avg;
-        double final_mark_med;
-        std::string category;
+    void setMarks(const std::vector<int> &m)
+    {
+        marks = m;
+    };
+
+    void setName(const std::string &n)
+    {
+        name = n;
+    };
+
+    void setSurname(const std::string &s)
+    {
+        surname = s;
+    };
+
+    void setExam(const int &e)
+    {
+        exam = e;
+    }
+
+private:
+    std::string name;
+    std::string surname;
+    std::vector<int> marks;
+    int exam;
+    double final_mark_avg;
+    double final_mark_med;
+    std::string category;
 };
-
