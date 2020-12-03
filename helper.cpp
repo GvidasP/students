@@ -22,11 +22,11 @@ int median(const std::vector<int>& numbers)
         (copy[size / 2] + copy[(size / 2) - 1]) / 2; // odd
 }
 
-std::list<Student> sortStudents(std::list<Student> students)
+std::vector<Student> sortStudents(std::vector<Student> students)
 {
     auto start = std::chrono::steady_clock::now();
 
-    std::list<Student> vargsiukai;
+    std::vector<Student> vargsiukai;
 
     // std::partition_copy(students.begin(), students.end(), vargsiukai.begin(), kietekai.begin(), [](Student s){return s.final_mark_avg < 5;});
 
@@ -40,11 +40,11 @@ std::list<Student> sortStudents(std::list<Student> students)
 
     return vargsiukai;
 }
-std::vector<Student> readStudents() {
+std::vector<Student> readStudents(std::string fileName) {
 	auto start = std::chrono::steady_clock::now(); // Start time
 
 	try {
-		std::ifstream ifs("studentai1000000.txt");
+		std::ifstream ifs(fileName);
 
 		if (!ifs.is_open()) {
 			throw("Failas neegzistuoja");

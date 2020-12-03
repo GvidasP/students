@@ -17,11 +17,13 @@ int main()
     //cout << "Kiek studentu sugeneruoti?";
     //cin >> m;
 
-    //writeStudents(m);
+    // writeStudents(1000000);
 
-    std::vector<Student> students = readStudents();
+    std::vector<Student> students_1 = readStudents("studentai100000.txt");
+    std::vector<Student> students_2 = readStudents("studentai1000000.txt");
 
-    // sortStudents(students);
+    sortStudents(students_1);
+    sortStudents(students_2);
 
     /*int n;
 

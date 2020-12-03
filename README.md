@@ -81,6 +81,26 @@ Naudojamas **remove_copy_if** algoritmas. Studentai iš vieno konteinerio perkel
 `Studentu rusiavimas i 2 kategorijas uztruko: 0.185952`, naudojant `vector` konteinerį
 `Studentu rusiavimas i 2 kategorijas uztruko: 0.18629`, naudojant `list` konteinerį
 
-# v1.0 versija
+# v1.1 versija
 
-Pereita iš CodeBlocks į Visual Studio
+Pereita iš CodeBlocks į Visual Studio, todėl, dėl kažkokios priežasties, smarkiai pailgėjo programos veikimas.
+
+## Palyginimas tarp `struct` ir `class`
+
+Naudojant `struct`, studentų rūšiavimas užtruko:
+`Studentu rusiavimas i 2 kategorijas uztruko: 0.0043415`, naudojant `studentai100000.txt`
+`Studentu rusiavimas i 2 kategorijas uztruko: 0.185952`, naudojant `studentai1000000.txt`
+
+### O1
+
+Naudojant `class`, studentų rūšiavimas užtruko:
+`Studentu rusiavimas i 2 kategorijas uztruko: 0.170461`, naudojant `studentai100000.txt`
+`Studentu rusiavimas i 2 kategorijas uztruko: 1.75277`, naudojant `studentai1000000.txt`
+
+### O2
+
+Naudojant `class`, studentų rūšiavimas užtruko:
+`Studentu rusiavimas i 2 kategorijas uztruko: 0.151073`, naudojant `studentai100000.txt`
+`Studentu rusiavimas i 2 kategorijas uztruko: 1.56697`, naudojant `studentai1000000.txt`
+
+**O3 optimizavimo flag'o nebuvo tarp galimų pasirinkimų**
