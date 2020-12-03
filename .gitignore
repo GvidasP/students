@@ -343,3 +343,5 @@ healthchecksdb
 *.vcxproj
 *.vcxproj.filters
 *.sln
+/build
+/.vscode
