@@ -8,6 +8,6 @@ int median(const std::vector<int>& numbers);
 
 bool compareString(Student& a, Student& b);
 
-std::list<Student> readFile();
+std::vector<Student> readStudents();
 
 std::list<Student> sortStudents(std::list<Student> students);

@@ -52,22 +52,18 @@ std::vector<Student> generateStudents(int amount)
     std::mt19937 mt(rd());
 
     for (int i = 0; i < amount; i++) {
-        Student student;
+        std::vector<int> marks = generateRandomMarks(13, mt);
+        int exam = rand() % 10 + 1;
 
-        student.name = "Vardas" + std::to_string(i);
-        student.surname = "Pavarde" + std::to_string(i);
-        student.marks = generateRandomMarks(13, mt);
-        student.exam = rand() % 10 + 1;
-        student.final_mark_avg = calculateAvg(student.marks, student.exam);
-        student.final_mark_med = calculateMedian(student.marks, student.exam);
+        Student student("Vardas" + std::to_string(i), "Pavarde" + std::to_string(i), generateRandomMarks(13, mt), rand() % 10 + 1, calculateAvg(marks, exam), calculateMedian(marks, exam));
 
-        if (student.final_mark_avg < 5)
+        if (student.getFinalMarkAvg() < 5)
         {
-            student.file = true;
+            student.setCategory("vargsiukas");
         }
         else
         {
-            student.file = false;
+            student.setCategory("kietekas");
         }
 
         students.push_back(student);
@@ -80,12 +76,12 @@ std::vector<Student> generateStudents(int amount)
     return students;
 }
 
-std::ostream& operator<< (std::ostream& strm, const Student& s)
+std::ostream& operator<< (std::ostream& strm, Student& s)
 {
     std::stringstream ss;
-    std::copy(s.marks.begin(), s.marks.end(), std::ostream_iterator<int>(ss, " "));
+    std::copy(s.getMarks().begin(), s.getMarks().end(), std::ostream_iterator<int>(ss, " "));
     std::string marks_text = ss.str();
-    return strm << std::setw(15) << s.surname << std::setw(15) << s.name << " " << std::setw(15) << marks_text << s.final_mark_avg << std::setw(15) << s.final_mark_med << std::setw(15) << s.category << std::endl;
+    return strm << std::setw(15) << s.getSurname() << std::setw(15) << s.getName() << " " << std::setw(15) << marks_text << s.getFinalMarkAvg() << std::setw(15) << s.getFinalMarkMed() << std::setw(15) << s.getCategory() << std::endl;
 
 }
 
@@ -104,7 +100,7 @@ void writeStudents(int amount)
     std::string file_name = "studentai" + std::to_string(students.size()) + ".txt";
     std::ofstream students_file(file_name);
 
-    for (const Student& s : students)
+    for (Student& s : students)
     {
         students_file << s;
         /* if(s.file) {

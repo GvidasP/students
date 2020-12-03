@@ -22,11 +22,6 @@ int median(const std::vector<int>& numbers)
         (copy[size / 2] + copy[(size / 2) - 1]) / 2; // odd
 }
 
-bool compareString(Student& a, Student& b)
-{
-    return a.name < b.name;
-}
-
 std::list<Student> sortStudents(std::list<Student> students)
 {
     auto start = std::chrono::steady_clock::now();
@@ -37,7 +32,7 @@ std::list<Student> sortStudents(std::list<Student> students)
 
     //std::partition_copy(begin(students), end(students), back_inserter(vargsiukai), back_inserter(kietekai), [](Student s){ return s.final_mark_avg < 5; });
 
-    std::remove_copy_if(begin(students), end(students), back_inserter(vargsiukai), [](Student s) { return s.final_mark_avg < 5; });
+    std::remove_copy_if(begin(students), end(students), back_inserter(vargsiukai), [](Student s) { return s.getFinalMarkAvg() < 5; });
 
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end - start;
@@ -45,59 +40,56 @@ std::list<Student> sortStudents(std::list<Student> students)
 
     return vargsiukai;
 }
+std::vector<Student> readStudents() {
+	auto start = std::chrono::steady_clock::now(); // Start time
 
-std::list<Student> readFile()
-{
-    try
-    {
-        auto start = std::chrono::steady_clock::now();
+	try {
+		std::ifstream ifs("studentai1000000.txt");
 
-        std::ifstream ifs("studentai1000000.txt");
+		if (!ifs.is_open()) {
+			throw("Failas neegzistuoja");
+		}
 
-        if (!ifs.is_open())
-        {
-            throw("Failas neegzistuoja.");
+		std::vector<Student> students;
+		std::string line;
 
-        }
+		std::getline(ifs, line); // Skip first line
 
-        std::list<Student> students;
-        std::string line;
+		while (std::getline(ifs, line)) {
+			std::istringstream iss(line);
+			std::istream_iterator<std::string> begin(iss), end;
+			std::vector<std::string> tokens(begin, end);
+			int temp = 2;
 
-        std::getline(ifs, line);
-        while (std::getline(ifs, line))
-        {
-            std::istringstream iss(line);
-            std::istream_iterator<std::string> begin(iss), end;
-            std::vector<std::string> tokens(begin, end);
+			Student student;
+			std::vector<int> marks;
 
-            Student stu;
-            int temp = 2;
+			student.setName(tokens[0]);
+			student.setSurname(tokens[1]);
 
-            stu.name = tokens[0];
-            stu.surname = tokens[1];
+			for (int i = 0; i < 7; i++)
+			{
+				marks.push_back(stoi(tokens[temp]));
+				temp++;
+			}
 
-            if (tokens.size() < 10)
-                throw "Masyvas per trumpas.";
+			student.setMarks(marks);
+			student.setExam(stoi(tokens[7]));
 
-            for (int i = 0; i < 7; i++)
-            {
-                stu.marks.push_back(stoi(tokens[temp]));
-                temp++;
-            }
-            stu.exam = stoi(tokens[7]);
-            temp = 2;
-            students.push_back(stu);
-        }
+			temp = 2;
 
-        auto end = std::chrono::steady_clock::now();
-        std::chrono::duration<double> elapsed_seconds = end - start;
-        std::cout << "Failo nuskaitymas uztruko: " << elapsed_seconds.count() << "\n";
+			students.push_back(student);
+		}
 
-        return students;
-    }
+		auto end = std::chrono::steady_clock::now();
+		std::chrono::duration<double> elapsed_seconds = end - start;
+		std::cout << "Studentu nuskaitymas is failo uztruko: " << elapsed_seconds.count() << "\n";
 
-    catch (const char* e)
-    {
-        std::cout << "Exception: " << e << "\n";
-    }
+		return students;
+	}
+	catch (const char* e)
+	{
+		std::cout << "Exception: " << e << "\n";
+	}
 }
+

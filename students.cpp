@@ -19,9 +19,9 @@ int main()
 
     //writeStudents(m);
 
-    std::list<Student> students = readFile();
+    std::vector<Student> students = readStudents();
 
-    sortStudents(students);
+    // sortStudents(students);
 
     /*int n;
 
