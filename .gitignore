@@ -1,0 +1,7 @@
+*.txt
+/bin
+/build
+/obj
+/unittest-cpp-master
+*.depend
+*.layout
